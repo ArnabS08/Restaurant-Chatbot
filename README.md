@@ -1,2 +1,12 @@
-# Restaurant-Chatbot
-A restaurant chatbot that takes up orders, makes reservations, and provides information on items on the menu.
+# Introduction
+
+This is a repository created by *Arnab*
+
+## Usage
+
+Run this command to execute the application:
+
+`python main.py`
+
+In the command
+```
