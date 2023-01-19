@@ -6,6 +6,6 @@ This is a repository created by *Arnab*
 
 Run this command to execute the application:
 
-`python filename.py`
+`python main.py`
 
 ```
