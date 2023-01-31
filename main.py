@@ -9,7 +9,7 @@ Refrences: My Bootcamp 1 Final Project
 ********************************** Part 1 **********************************
 '''
 
-# All the information for food items. Dictinary for resturant inventory.
+# All the information for food items, dictinary for resturant inventory
 inventory = [
   {'order': 1, 'food': 'dumplings', 'price': 6.99, 'spice': 2, 'ingredients': 'ground turkey, spices, flour'},
   {'order': 2, 'food': 'noodles', 'price': 9.99, 'spice': 3, 'ingredients': 'beef, chicken & beef stocking, spices, wheat flour'},
@@ -34,20 +34,22 @@ print("     ***MENU***\n 1. Dumplings      | 6.99\n 2. Noodles        | 9.99\n 3
 def order(): # Function for ordering food
   tab = 0.00 # Amount that the user has to pay
   while True:
-    order_choice = int(input("\nType the number of the item you want to order, and type 0 when your finished with your order. ")) # Allows the user to choose items by numbers
-    if order_choice == 0:
-      break # Breaks out of the while loop
-    elif order_choice > 9:
+    try:
+      order_choice = input("\nType the number of the item you want to order or the name of the item, and type done when your finished with your order. ") # Allows the user to choose items by numbers or name of item
+    except:
       print("Sorry we don't have that order number.")
+      
+    if order_choice.lower() == 'done':
+      break # Breaks out of the while loop
 
     for i in range(len(inventory)):
-      if inventory[i]['order'] == order_choice: # Matches order_choice with a order number
-        print(inventory[i]['food'], "added to tab") # Prints the food with that order number.
-        tab += inventory[i]['price'] # Adds price of the food to tab.
+      if inventory[i]['food'] == order_choice: # Matches order_choice with a order number
+        print(inventory[i]['food'], "added to tab") # Prints the food with that order number
+        tab += inventory[i]['price'] # Adds price of the food to tab
 
-  print("Final tab is", round(tab * .0825 + tab, 2)) # Adds taxes and rounds the tab with two decimal points. round() form Stack Overflow
+  print("Final tab plus taxes is", round(tab * .0825 + tab, 2)) # Adds taxes and rounds the tab with two decimal points
   print("Thank you for dining!")
-  exit() # Ends the code.
+  exit() # Ends the code
   
 '''
 ********************************** Part 3 **********************************
@@ -61,7 +63,7 @@ if choice == 1: # If user types 1 then the function order() will play
 
 if choice == 2: # If the user types 2 then they can see more info on an item
   while True:
-    info_choice = int(input("\nType the number of the item you want more information on, and type 0 when your ready to order. ")) # Allows the user to select which item they want more info on.
+    info_choice = int(input("\nType the number of the item you want more information on, and type 0 when your ready to order. ")) # Allows the user to select which item they want more info on
     if info_choice == 0: # Once the user is done with looking at information, they can order food
       order()
     elif info_choice > 9:
@@ -76,5 +78,5 @@ if choice == 2: # If the user types 2 then they can see more info on an item
 if choice == 3: # If the user types 2 then they can see more info on an item
   reservation = input("\nWhat time would you like to schedule a reservation? (#:##) ") # Gets the time of reservation
   name = input("Under what name do you want your reservation? ") # Gets the name for the reservation
-  print("Reservation at", reservation, "for", name, "has been made.") # Displays final reservation time with the name.
+  print("Reservation at", reservation, "for", name, "has been made.\nSee you then!") # Displays final reservation time with the name
   exit()
